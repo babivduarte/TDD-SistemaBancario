@@ -102,9 +102,7 @@ public class Conta implements Cadastro {
      * @return
      */
     public double getSaldoTotal() {
-        /* TODO: Você precisa implementar este método. 
-        A linha abaixo deve ser substituída pelo seu código */
-        return 0.0;
+        return saldo + limite;
     }
 
     /**
@@ -137,7 +135,12 @@ public class Conta implements Cadastro {
      * @param valor valor a ser depositado (deve ser um valor positivo)
      */
     public void depositoDinheiro(final double valor) {
-        // TODO: Você precisa implementar este método
+        Movimentacao movimentacao = new Movimentacao(this);
+        movimentacao.setConfirmada(true);
+        movimentacao.setTipo('C');
+        movimentacao.setValor(valor);
+        saldo += valor;
+        movimentacoes.add(movimentacao);
     }
 
     /**
@@ -201,4 +204,5 @@ public class Conta implements Cadastro {
         }
         this.limite = limite;
     }
+    
 }
